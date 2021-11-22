@@ -18,14 +18,12 @@ public class App {
                 Person person = context.getBean(Person.class);
                 Parser parser = context.getBean(Parser.class);
                 //FileConfig config = context.getBean(FileConfig.class);
-
+                ObjectMapper objectMapper = new ObjectMapper();
 
 
                 List<String> jsonfiles = parser.parse("C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources");
 
                 for (String s: jsonfiles) {
-
-                    ObjectMapper objectMapper = new ObjectMapper();
 
                     InputStream input = new FileInputStream(s);
 
