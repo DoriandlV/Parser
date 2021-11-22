@@ -12,16 +12,16 @@ import java.util.List;
 
 public class App {
 
-        public static void main(String args[]) throws IOException {
+        public static void main(String args[]) throws IOException{
 
                 ApplicationContext context = new AnnotationConfigApplicationContext("com");
                 Person person = context.getBean(Person.class);
                 Parser parser = context.getBean(Parser.class);
-                //FileConfig config = context.getBean(FileConfig.class);
                 ObjectMapper objectMapper = new ObjectMapper();
 
+                String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
 
-                List<String> jsonfiles = parser.parse("C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources");
+                List<String> jsonfiles = parser.parse(filePath);
 
                 for (String s: jsonfiles) {
 
