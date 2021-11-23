@@ -27,7 +27,6 @@ public class Runner implements Runnable {
         List<String> jsonFiles = parser.parse(filePath);
         for (String json : jsonFiles) {
 
-
             InputStream input = new FileInputStream(json);
 
             Person person = objectMapper.readValue(input, Person.class);
