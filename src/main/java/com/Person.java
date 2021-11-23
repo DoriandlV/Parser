@@ -26,4 +26,5 @@ public class Person {
     private String phone;
     @Email(message = "Email should be valid")
     private String email;
+
 }

@@ -14,11 +14,11 @@ import java.util.stream.Stream;
 @Component
 public class Parser {
 
-  public List<String> parse(String s) throws IOException{
+  public List<String> parse(String filePath) throws IOException{
 
       List<String> result;
 
-      Stream<Path> walk = Files.walk(Paths.get(s));
+      Stream<Path> walk = Files.walk(Paths.get(filePath));
 
       result = walk.filter(p -> !Files.isDirectory(p))
               .map(p -> p.toString().toLowerCase())
