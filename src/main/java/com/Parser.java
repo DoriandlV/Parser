@@ -1,6 +1,6 @@
 package com;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component
+@Service
 public class Parser {
 
   public List<String> parse(String filePath) throws IOException{
@@ -24,7 +24,7 @@ public class Parser {
               .map(p -> p.toString().toLowerCase())
               .filter(f -> f.endsWith("json"))
               .collect(Collectors.toList());
-            System.out.println(result);
+         //   System.out.println(result);
 
       return result;
   }

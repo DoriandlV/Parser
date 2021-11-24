@@ -5,14 +5,15 @@ import lombok.SneakyThrows;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+
+import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 
 import java.util.List;
 
-@Component
+@Service
 public class Runner implements Runnable {
 
     @SneakyThrows
@@ -31,10 +32,11 @@ public class Runner implements Runnable {
 
             Person person = objectMapper.readValue(input, Person.class);
 
-            System.out.println("FirstName :" + person.getFirstName());
-            System.out.println("LastName :" + person.getLastName());
-            System.out.println("Phone :" + person.getPhone());
-            System.out.println("Email :" + person.getEmail());
+            System.out.println("");
+            System.out.println("FirstName : " + person.getFirstName());
+            System.out.println("LastName  : " + person.getLastName());
+            System.out.println("Phone     : " + person.getPhone());
+            System.out.println("Email     : " + person.getEmail());
         }
 
     }
