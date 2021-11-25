@@ -14,9 +14,8 @@ import javax.validation.constraints.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person implements Validator {
+public class Person {
 
-    PersonValidator validator;
 
     @NotNull(message = "Name cannot be null")
     private String firstName;
@@ -27,15 +26,4 @@ public class Person implements Validator {
     @Email(message = "Email should be valid", regexp = "^(.+)@(\\S+) $.")
     private String email;
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-if (email != null) {
-
-}
-    }
 }
