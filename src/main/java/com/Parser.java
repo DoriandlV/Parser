@@ -24,7 +24,6 @@ public class Parser {
               .map(p -> p.toString().toLowerCase())
               .filter(f -> f.endsWith("json"))
               .collect(Collectors.toList());
-         //   System.out.println(result);
 
       return result;
   }

@@ -1,28 +1,40 @@
 package com;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.SneakyThrows;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 
 import java.util.List;
 
 @Service
-public class Runner implements Runnable {
+
+public class Runner {
+
+    @Autowired
+    private  Parser parser;
+    @Autowired
+    private  FileConfiguration fileConfiguration;
+
+    public String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
+   // String path = Runner.class.getClassLoader().getResource(".json").getPath();
+
+
+   // InputStream inputStream = Runner.class.getClassLoader().getResourceAsStream(String.valueOf(fileConfiguration.getPaths()));
+
+    public Runner() {
+    }
 
     @SneakyThrows
-    @Override
     public void run() {
-        ApplicationContext context = new AnnotationConfigApplicationContext("com");
-        Parser parser = context.getBean(Parser.class);
+        //System.out.println(path);
+        //System.out.println(inputStream);
+        System.out.println(fileConfiguration.getPaths());
 
-        String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
         ObjectMapper objectMapper = new ObjectMapper();
 
         List<String> jsonFiles = parser.parse(filePath);
