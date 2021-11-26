@@ -45,7 +45,7 @@ public class Runner {
         System.out.println(fileConfiguration.getPaths());
 
         ObjectMapper objectMapper = new ObjectMapper();
-
+//
         List<String> jsonFiles = parser.parse(filePath);
         for (String json : jsonFiles) {
 
