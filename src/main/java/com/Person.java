@@ -21,9 +21,9 @@ public class Person {
     private String firstName;
     @Size(min = 2, max = 30)
     private String lastName;
-    @Pattern(regexp = "(\"^(\\\\+7\\\\d{1,3}( )?)?((\\\\(\\\\d{3}\\\\))|\\\\d{3})[- .]?\\\\d{3}[- .]?\\\\d{4}$\")")
+    @Pattern(regexp="^[\\d\\(\\)\\-+ ]+$")
     private String phone;
-    @Email(message = "Email should be valid", regexp = "^(.+)@(\\S+) $.")
+    @Email(message = "Email should be valid")
     private String email;
 
 }
