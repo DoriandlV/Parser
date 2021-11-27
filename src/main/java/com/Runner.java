@@ -24,16 +24,13 @@ public class Runner {
     @Autowired
     private  FileConfiguration fileConfiguration;
     @Autowired
-    private PersonRepository pRepository;
+    private PersonRepository personRepository;
     @Autowired
     private Validator validator;
     @Autowired
     private PersonPrinter personPrinter;
 
-
-
     public String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
-
 
     @SneakyThrows
     public void run() {
@@ -50,6 +47,7 @@ public class Runner {
 
             Person person = objectMapper.readValue(input, Person.class);
 
+
             Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
             List<String> violations = constraintViolations.stream().map(ConstraintViolation::getMessage).collect(Collectors.toList());
@@ -58,7 +56,7 @@ public class Runner {
 
             if (constraintViolations.isEmpty()){
 
-                pRepository.save(person);
+                personRepository.save(person);
                 personPrinter.printer(person);
 
          }   else {
