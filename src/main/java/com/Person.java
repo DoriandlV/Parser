@@ -21,7 +21,7 @@ public class Person {
     private String firstName;
     @Size(min = 2, max = 30)
     private String lastName;
-    @Pattern(regexp="^[\\d\\(\\)\\-+ ]+$")
+    @Pattern(regexp="^[\\d\\(\\)\\-+ ]+$", message="Phone should be valid")
     private String phone;
     @Email(message = "Email should be valid")
     private String email;

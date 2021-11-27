@@ -27,17 +27,13 @@ public class Runner {
     private PersonRepository pRepository;
     @Autowired
     private Validator validator;
+    @Autowired
+    private PersonPrinter personPrinter;
+
+
 
     public String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
 
-   // String path = Runner.class.getClassLoader().getResource(".json").getPath();
-   // String pathBis = Runner.class.getClassLoader().getResource(".json").getPath();
-   // getResource("bar.txt");
-    // getClassLoader().getResource("foo/bar.txt");
-   // InputStream inputStream = Runner.class.getClassLoader().getResourceAsStream(String.valueOf(fileConfiguration.getPaths()));
-
-    public Runner() {
-    }
 
     @SneakyThrows
     public void run() {
@@ -47,6 +43,7 @@ public class Runner {
         ObjectMapper objectMapper = new ObjectMapper();
 
         List<String> jsonFiles = parser.parse(filePath);
+
         for (String json : jsonFiles) {
 
             InputStream input = new FileInputStream(json);
@@ -55,23 +52,21 @@ public class Runner {
 
             Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
-        // List<String> violations=  constraintViolations.stream().filter(f->f("ConstraintViolationImpl")).collect(Collectors.toList());
+            List<String> violations = constraintViolations.stream().map(ConstraintViolation::getMessage).collect(Collectors.toList());
+
+            List<Object> violationsValue = constraintViolations.stream().map(ConstraintViolation::getInvalidValue).collect(Collectors.toList());
 
             if (constraintViolations.isEmpty()){
 
                 pRepository.save(person);
+                personPrinter.printer(person);
 
-                 System.out.println(constraintViolations);
-                 System.out.println("FirstName : " + person.getFirstName());
-                 System.out.println("LastName  : " + person.getLastName());
-                 System.out.println("Phone     : " + person.getPhone());
-                 System.out.println("Email     : " + person.getEmail());
          }   else {
-                    System.out.println("Siamo nell'Else di constrainViolations :" + constraintViolations);
-                    System.out.println("FirstName : " + person.getFirstName());
-                    System.out.println("LastName  : " + person.getLastName());
-                    System.out.println("Phone     : " + person.getPhone());
-                    System.out.println("Email     : " + person.getEmail());
+
+                System.out.println("");
+                System.out.println("ERROR ARE PRESENT");
+                System.out.println(violations + violationsValue.toString());
+                personPrinter.printer(person);
         }
 
         }
