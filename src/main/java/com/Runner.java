@@ -24,11 +24,11 @@ public class Runner {
     @Autowired
     private  FileConfiguration fileConfiguration;
     @Autowired
-    private PersonRepository personRepository;
+    private  PersonRepository personRepository;
     @Autowired
-    private Validator validator;
+    private  PersonPrinter personPrinter;
     @Autowired
-    private PersonPrinter personPrinter;
+    private  Validator validator;
 
     public String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
 
@@ -46,7 +46,6 @@ public class Runner {
             InputStream input = new FileInputStream(json);
 
             Person person = objectMapper.readValue(input, Person.class);
-
 
             Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 
