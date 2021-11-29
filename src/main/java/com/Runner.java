@@ -5,6 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.ParseException;
+import org.springframework.expression.ParserContext;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
@@ -30,20 +35,17 @@ public class Runner {
     @Autowired
     private  Validator validator;
 
-    public String filePath = "C:\\Users\\Umberto\\Documents\\MAX\\Parser\\src\\main\\resources";
-
     @SneakyThrows
     public void run() {
 
-        System.out.println(fileConfiguration.getPaths());
-
         ObjectMapper objectMapper = new ObjectMapper();
 
-        List<String> jsonFiles = parser.parse(filePath);
+        List<String> jsonFiles = fileConfiguration.getPaths() ;
+        System.out.println(jsonFiles);
 
         for (String json : jsonFiles) {
 
-            InputStream input = new FileInputStream(json);
+            InputStream input = Runner.class.getClassLoader().getResourceAsStream(json);
 
             Person person = objectMapper.readValue(input, Person.class);
 
@@ -62,7 +64,7 @@ public class Runner {
 
                 System.out.println("");
                 System.out.println("ERROR ARE PRESENT");
-                System.out.println(violations + violationsValue.toString());
+                System.out.println(violations +  ":"+ violationsValue.toString());
                 personPrinter.printer(person);
         }
 

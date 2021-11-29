@@ -15,7 +15,7 @@ import java.util.List;
 @PropertySource("classpath:application.properties")
 public class FileConfiguration {
 
-    @Value("${filepaths}")
+    @Value("#{'${filepaths}'.split(',')}")
     @Getter
     @Setter
     private List<String> paths;
