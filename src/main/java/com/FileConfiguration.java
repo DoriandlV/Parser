@@ -20,6 +20,11 @@ public class FileConfiguration {
     @Setter
     private List<String> paths;
 
+    @Value("${printFormatPersonExpressionSpEl}")
+    @Getter
+    @Setter
+    private String printFormatPersonExpressionSpEl;
+
     @Bean
     public Validator validator(){
         return new LocalValidatorFactoryBean();
