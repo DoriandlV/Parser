@@ -34,7 +34,6 @@ public class Runner {
     public void run() {
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         List<String> jsonFiles = fileConfiguration.getPaths();
         System.out.println(jsonFiles);
 
