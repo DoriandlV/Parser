@@ -5,11 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.Expression;
-import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.ParseException;
-import org.springframework.expression.ParserContext;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
@@ -40,7 +35,7 @@ public class Runner {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        List<String> jsonFiles = fileConfiguration.getPaths() ;
+        List<String> jsonFiles = fileConfiguration.getPaths();
         System.out.println(jsonFiles);
 
         for (String json : jsonFiles) {
