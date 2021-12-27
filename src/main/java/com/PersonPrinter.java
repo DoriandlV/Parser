@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 public class PersonPrinter {
 
     @Autowired
-    FileConfiguration fileConfiguration ;
+    FileConfiguration fileConfiguration;
 
 
     ExpressionParser expressionParser = new SpelExpressionParser();
 
 
-    public Person printer (Person person){
+    public Person printer(Person person) {
 
         Expression forPrinting = expressionParser.parseExpression(fileConfiguration.getPrintFormatPersonExpressionSpEl());
 
@@ -29,6 +29,6 @@ public class PersonPrinter {
 
         System.out.println(forPrinting.getValue(context));
 
-       return person;
+        return person;
     }
 }

@@ -26,7 +26,7 @@ public class FileConfiguration {
     private String printFormatPersonExpressionSpEl;
 
     @Bean
-    public Validator validator(){
+    public Validator validator() {
         return new LocalValidatorFactoryBean();
     }
 }

@@ -8,13 +8,13 @@ import java.util.List;
 @Repository
 public class PersonRepository {
 
-    List <Person> people = new ArrayList<>();
+    List<Person> people = new ArrayList<>();
 
-    public List<Person> getUsers(){
+    public List<Person> getUsers() {
         return people;
     }
 
-    public Person save(Person person){
+    public Person save(Person person) {
         people.add(person);
         return person;
     }
